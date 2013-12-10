@@ -75,7 +75,7 @@ class Timer {
   }
 
   void show() {
-    currentTime = second();
+    currentTime = millis();
     wow = color(255, 255, 255);
 
     fill(wow);
