@@ -1,13 +1,13 @@
+/* RAIN CLASS */
 class Rain {
   PVector loc, vel;
   int d;
   PVector cLoc;
 
-  Rain(PVector cLoc2) {
+  Rain() {
     loc = new PVector(random(width), random(height));
     vel = new PVector(0, random(2, 5));
     d = int(random(3-10));
-    cLoc = cLoc2;
   }
 
   void show() {
@@ -27,6 +27,7 @@ class Rain {
   }
 }
 
+/* CATCHER CLASS */
 class Catcher {
   PVector cLoc;
   int w, h;
@@ -61,31 +62,24 @@ class Catcher {
   }
 }
 
+/* TIMER CLASS */
 class Timer {
   int currentTime;
   int oldTime;
   color wow;
-  PImage hawlucha;
 
   Timer() {
     currentTime = 0;
     oldTime = 0;
     wow = color(255, 255, 255);
-    hawlucha = loadImage("HAWLUCHA.png");
   }
 
   void show() {
-    currentTime = millis();
+    currentTime = second();
     wow = color(255, 255, 255);
-    
-    fill(wow);
-    textSize(25);
-    text(millis(), width/2, height/2);
 
-    if (currentTime == 10000) {
-      stop();
-    }
+    fill(wow);
+    textSize(15);
+    text("TIME: " + currentTime, width/2, height/2);
   }
 }
-
-

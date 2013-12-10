@@ -1,10 +1,11 @@
 /* RAINDROPS GAME: SKETCH VER. */
 
-      PVector bwone, bwtwo;
-      color gradientColor1, gradientColor2;
-      Catcher catchie = new Catcher();
-      Timer timer1 = new Timer();
-      ArrayList<Rain> rainDrops = new ArrayList<Rain>();
+PVector bwone, bwtwo;
+int numberRemoved;
+color gradientColor1, gradientColor2;
+Catcher catchie = new Catcher();
+Timer timer1 = new Timer();
+ArrayList<Rain> rainDrops = new ArrayList<Rain>();
 
 void gradient(int xLoc, int yLoc, float w, float h, color c1, color c2) {
   for (int i = yLoc; i <=yLoc+h; i++) {
@@ -18,7 +19,9 @@ void gradient(int xLoc, int yLoc, float w, float h, color c1, color c2) {
 void setup() {
   gradientColor1 = color(25, 20, 50);
   gradientColor2 = color(5, 20, 25);
-
+  
+  numberRemoved = rainDrops.size();
+  
   textAlign(CENTER);
   frameRate(10);
   background(0);
@@ -26,8 +29,8 @@ void setup() {
   size(500, 500);
   frameRate(60);
 
-  for (int i = 0; i<=2000; i++) {
-    rainDrops.add(new Rain(catchie.cLoc));
+  for (int i = 0; i<=1000; i++) {
+    rainDrops.add(new Rain());
   }
 }
 
@@ -37,12 +40,16 @@ void draw() {
     Rain drop = rainDrops.get(i);
     drop.show();
     drop.fall();
+    if (drop.loc.y + drop.d/2 >= catchie.cLoc.y - 12 && drop.loc.y + drop.d/2 <= catchie.cLoc.y && drop.loc.x + drop.d/2 <= catchie.cLoc.x-catchie.w/2 && drop.loc.x + drop.d/2 >= catchie.cLoc.x+catchie.w/2) {
+      rainDrops.remove(i);
+    }
   }
 
   timer1.show();
-  
+  textSize(15);
+  text("SCORE: " + numberRemoved, width/2, 270);
+
   catchie.show();
   catchie.move();
-  
 }
 
