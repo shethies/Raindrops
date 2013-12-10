@@ -11,4 +11,4 @@
    bottom of the screen, controlled
    by the left and right arrow keys.
 
-   There is no time limit.
+   There is a time limit.
