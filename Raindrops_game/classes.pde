@@ -18,8 +18,8 @@ class Rain {
 
   void fall() {
     loc.add(vel);
-    if (loc.y + d/2 >= height) {
-      loc.y = 0;
+    if (loc.y + d/2 >= height) {    // If the object falls out of the square,
+      loc.y = 0;                    // they are reset to fall from the top
       if (loc.y + d/2 == 450 && loc.x <= cLoc.x+75 && loc.x >= cLoc.x-75) {
         loc.x = 0;
       }
@@ -45,7 +45,7 @@ class Catcher {
     rect(cLoc.x, cLoc.y, w, h);
   }
 
-  void move() {
+  void move() {       // Moves catcher object with arrow keys
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == LEFT) {
@@ -65,21 +65,26 @@ class Catcher {
 /* TIMER CLASS */
 class Timer {
   int currentTime;
-  int oldTime;
   color wow;
 
   Timer() {
     currentTime = 0;
-    oldTime = 0;
     wow = color(255, 255, 255);
   }
 
   void show() {
-    currentTime = millis();
+    currentTime = millis();    // Making millis() a variable so we can use it
     wow = color(255, 255, 255);
 
     fill(wow);
     textSize(15);
-    text("TIME: " + currentTime, width/2, height/2);
+    text("TIME: " + currentTime, width/2, height/2);    // Displays time
+  }
+
+  void halt() {
+    if (numberRemoved == 1000) {
+      stop();    // Stops the timer if 1000 objects/all objects
+                 // in the array are deleted
+    }
   }
 }
