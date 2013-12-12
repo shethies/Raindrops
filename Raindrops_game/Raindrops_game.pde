@@ -8,7 +8,7 @@ Timer timer1 = new Timer();
 ArrayList<Rain> rainDrops = new ArrayList<Rain>();
 String in1, in2;
 
-void ss() {
+void ss() {    // (basic) Start screen function
   in1 = "Use the arrow keys to move the rectangle and catch the raindrops.";
   in2 = "Catch all 1000 in less than 25000 milliseconds to win!";
   if (actualTime <= 2000) {
@@ -23,7 +23,7 @@ void ss() {
   }
 }
 
-void es() {
+void es() {    // (basic) End screen function
   if (actualTime <= 25000 && numberRemoved == 1000) {
     background(0);
     textAlign(CENTER);
@@ -33,8 +33,8 @@ void es() {
   }
 }
 
-void go() {
-    if (actualTime > 25000 && numberRemoved < 1000) {
+void go() {    // (basic) Game Over screen function
+    if (actualTime > 2000 && numberRemoved < 1000) {
     background(0);
     textAlign(CENTER);
     fill(150);
